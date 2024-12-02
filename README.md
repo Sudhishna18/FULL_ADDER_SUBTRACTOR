@@ -38,20 +38,55 @@ Borrow out = A'Bin + A'B + BBin
 
 **Truthtable**
 
+![image](https://github.com/user-attachments/assets/37201bb7-2f6e-4777-962d-83671cda89d3)
+
+![image](https://github.com/user-attachments/assets/2b4a451e-d69a-4c62-a8a0-d909363a1bd4)
+
 **Procedure**
 
-Write the detailed procedure here
+Full Adder:
+ Inputs: Three inputs: A, B (the two bits to be added), and Cin (the carry-in bit from a previous
+ addition). Outputs: Two outputs: Sum (the resulting sum) and Cout (the carry-out bit). Logic: Sum =
+ A ^ B ^ Cin (XOR operation). Cout = (A & B) | (A & Cin) | (B & Cin) (carry occurs if at least two
+ inputs are 1).
+
+ Full Subtractor:
+ Inputs: Three inputs: A, B (the two bits, where A - B is calculated), and Bin (the borrow-in from a
+ previous subtraction). Outputs: Two outputs: Diff (the resulting difference) and Bout (the borrow
+out bit). Logic: Diff = A ^ B ^ Bin (XOR operation). Bout = (~A & B) | ((~A | B) & Bin) (borrow occurs
+ if A is less than B or needs a borrow). Both circuits follow simple XOR logic for the primary result
+ and AND-OR logic to determine carry or borrow conditions
 
 **Program:**
+```
+Program to design a half subtractor and full subtractor circuit and verify its truth table in quartus using Verilog programming.
+Developed by:P.Sudhishna
+RegisterNumber:24007608
+```
+```
+module fulladdsub(a,b,cin,bin,sum,carry,difference,borrow); 
+input a,b,cin,bin; output sum,carry,difference,borrow; 
+assign sum=a^b^cin; 
+assign carry=(a^b)&cin|a&b;
+ assign difference=a^b^bin; 
+assign borrow=~(a^b)&bin|(~a)&b;
+```
 
-/* Program to design a half subtractor and full subtractor circuit and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
-*/
 
 **RTL Schematic**
 
+![image](https://github.com/user-attachments/assets/4691e0c6-9eea-4919-892f-d7e64a7bddaa)
+
+
+
 **Output Timing Waveform**
 
+![image](https://github.com/user-attachments/assets/893e44f0-2c95-4965-815c-0649f54cdb73)
+
 **Result:**
+
+ Thus the Full Adder and Full Subtractor circuits are designed and the truth tables is verified using
+ Quartus software
 
 Thus the Full Adder and Full Subtractor circuits are designed and the truth tables is verified using Quartus software.
 
